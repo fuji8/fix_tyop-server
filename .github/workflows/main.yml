@@ -37,7 +37,7 @@ jobs:
             ghcr.io/fuji8/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
 
   deploy:
-    needs: image
+    # needs: image
     name: Deploy server with ansible
     runs-on: ubuntu-latest
     steps:
@@ -55,4 +55,4 @@ jobs:
           # Optional, additional flags to pass to ansible-playbook
           options: |
             --inventory=host_vars/conoha.yml
-            --ssh-extra-args= -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null
+            --ssh-extra-args="-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null"
