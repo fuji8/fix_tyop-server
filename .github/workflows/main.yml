@@ -54,4 +54,5 @@ jobs:
           vault_password: ${{secrets.VAULT_PASSWORD}}
           # Optional, additional flags to pass to ansible-playbook
           options: |
-            --inventory host_vars/conoha.yml
+            --inventory=host_vars/conoha.yml
+            --ssh-extra-args= -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null
