@@ -35,3 +35,19 @@ jobs:
           tags: |
             ghcr.io/fuji8/${{ env.IMAGE_NAME }}:latest
             ghcr.io/fuji8/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
+
+  deploy:
+    needs: image
+    name: Deploy server with ansible
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run playbook
+        uses: dawidd6/action-ansible-playbook@v2
+        with:
+          playbook: .ansible/app-deploy.yml
+          # Optional, directory where playbooks live
+          directory: ./.ansible
+          # Optional, SSH private key
+          key: ${{secrets.SSH_PRIVATE_KEY}}
+          # Optional, encrypted vault password
+          vault_password: ${{secrets.VAULT_PASSWORD}}

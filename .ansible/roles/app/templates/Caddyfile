@@ -1,0 +1,8 @@
+{
+    email haya10.88ha@gmail.com
+}
+
+
+app.fuji8.me {
+    reverse_proxy app:1323
+}

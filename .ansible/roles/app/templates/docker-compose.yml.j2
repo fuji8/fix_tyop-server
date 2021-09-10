@@ -1,0 +1,40 @@
+version: "3.7"
+
+services:
+  caddy:
+    image: caddy:2.3.0-alpine
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes: 
+      - ./Caddyfile:/etc/caddy/Caddyfile:rw
+    networks: 
+      - caddy
+
+  app:
+    image: ghcr.io/fuji8/fix_tyop-server:latest
+    restart: always
+    expose:
+      - "1323"
+    depends_on:
+      - mariadb
+    networks:
+      - default
+      - caddy
+
+  mariadb:
+    image: mariadb:10.3.9
+    environment:
+      MYSQL_ROOT_PASSWORD: "{{app.mariadb_root_password}}"
+      MYSQL_DATABASE: app
+    command: mysqld --character-set-server=utf8 --collation-server=utf8_general_ci
+    volumes:
+      - "./mariadb:/var/lib/mysql"
+    expose:
+      - "3306"
+    networks:
+      - default
+
+networks: 
+  caddy:
+

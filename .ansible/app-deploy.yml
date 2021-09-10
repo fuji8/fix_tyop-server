@@ -1,0 +1,6 @@
+- hosts: conoha
+  become: true
+  roles:
+    - pip
+    - docker
+    - app

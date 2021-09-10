@@ -1,0 +1,2 @@
+app:
+  mariadb_root_password: "{{vault_app_mariadb_root_password}}"

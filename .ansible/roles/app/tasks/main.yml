@@ -1,0 +1,22 @@
+- name: Create /srv/app
+  file:
+    path: /srv/app
+    state: directory
+    mode: "0755"
+
+- name: Generate Caddyfile
+  template:
+    src: Caddyfile
+    dest: /srv/app/Caddyfile
+
+- name: Generate docker-compose.yml
+  template:
+    src: docker-compose.yml.j2
+    dest: /srv/app/docker-compose.yml
+
+- name: Run docker compose up
+  docker_compose:
+    project_src: /srv/app
+    state: present
+    pull: yes
+    restarted: yes
