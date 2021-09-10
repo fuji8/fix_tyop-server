@@ -37,7 +37,7 @@ jobs:
             ghcr.io/fuji8/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
 
   deploy:
-    # needs: image
+    needs: image
     name: Deploy server with ansible
     runs-on: ubuntu-latest
     steps:
