@@ -94,7 +94,7 @@ func main() {
 		q.Set("speaker_name", CharacterName[dayofweek.DayOfWeek(dayOfWeek)])
 
 		var dialogue Dialogue
-		err = db.Where("day_of_week = ?", dayOfWeek).Where("oder = ?", order).Take(&dialogue).Error
+		err = db.Where("day_of_week = ?", dayOfWeek).Where("oder = ?", order).Order("RAND()").Take(&dialogue).Error
 		if err != nil {
 			return echo.NewHTTPError(http.StatusInternalServerError)
 		}
