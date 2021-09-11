@@ -1,2 +1,4 @@
 app:
   mariadb_root_password: "{{vault_app_mariadb_root_password}}"
+  aitalk_username: "{{vault_app_aitalk_username}}"
+  aitalk_password: "{{vault_app_aitalk_password}}"

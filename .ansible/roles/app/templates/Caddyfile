@@ -6,3 +6,7 @@
 app.fuji8.me {
     reverse_proxy app:1323
 }
+
+phpmyadmin.fuji8.me {
+    reverse_proxy phpmyadmin:18000
+}

@@ -1,2 +1,4 @@
 *.pem
 password
+docker-compose.yml
+mariadb

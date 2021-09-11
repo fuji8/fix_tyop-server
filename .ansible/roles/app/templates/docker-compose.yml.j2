@@ -14,6 +14,11 @@ services:
   app:
     image: ghcr.io/fuji8/fix_tyop-server:latest
     restart: always
+    environment:
+      aitalk_username: "{{app.aitalk_username}}"
+      aitalk_password: "{{app.sitalk_password}}"
+      mariadb_host: mariadb
+      mariadb_password: "{{app.mariadb_root_password}}"
     expose:
       - "1323"
     depends_on:
@@ -34,6 +39,21 @@ services:
       - "3306"
     networks:
       - default
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    environment:
+      - PMA_ARBITRARY=1
+      - PMA_HOST=mariadb
+      - PMA_USER=root
+      - PMA_PASSWORD="{{app.mariadb_root_password}}"
+    expose:
+      - "18000"
+    depends_on:
+      - mysql
+    networks:
+      - default
+
 
 networks: 
   caddy:
