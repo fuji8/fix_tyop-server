@@ -11,5 +11,6 @@ func main() {
 	e.GET("/", func(c echo.Context) error {
 		return c.String(http.StatusOK, "Golang, Hello, World!")
 	})
+	e.GET("/hogehoge", saveAndServeSound)
 	e.Logger.Fatal(e.Start(":1323"))
 }
