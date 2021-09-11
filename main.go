@@ -99,7 +99,7 @@ func main() {
 			return echo.NewHTTPError(http.StatusInternalServerError)
 		}
 		q.Set("text", dialogue.Dialogue)
-		u.RawQuery = q.Encode() + "&" + dialogue.Options
+		u.RawQuery = q.Encode() + dialogue.Options
 
 		resp, err := http.Get(u.String())
 		if err != nil {
