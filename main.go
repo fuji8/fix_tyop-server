@@ -53,7 +53,7 @@ func main() {
 	if password == "" {
 		password = "password"
 	}
-	host := os.Getenv("")
+	host := os.Getenv("mariadb_host")
 	if host == "" {
 		host = "localhost"
 	}
