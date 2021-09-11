@@ -35,6 +35,8 @@ services:
     command: mysqld --character-set-server=utf8 --collation-server=utf8_general_ci
     volumes:
       - "./mariadb:/var/lib/mysql"
+    ports:
+     - "3306:3306"
     expose:
       - "3306"
     networks:
@@ -46,8 +48,8 @@ services:
       - PMA_ARBITRARY=1
       - PMA_HOST=mariadb
       - PMA_USER=root
-    ports:
-      - "18000:80"
+    expose:
+      - "80"
     depends_on:
       - mariadb
     networks:

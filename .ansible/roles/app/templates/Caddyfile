@@ -8,5 +8,5 @@ app.fuji8.me {
 }
 
 phpmyadmin.fuji8.me {
-    reverse_proxy phpmyadmin:18000
+    reverse_proxy phpmyadmin:80
 }
