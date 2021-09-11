@@ -109,7 +109,7 @@ func main() {
 		buf := new(bytes.Buffer)
 		io.Copy(buf, resp.Body)
 
-		return c.Blob(http.StatusOK, "audio/ogg", buf.Bytes())
+		return c.Blob(http.StatusOK, "audio/mpeg", buf.Bytes())
 	})
 
 	e.POST("/dialogues", func(c echo.Context) error {
