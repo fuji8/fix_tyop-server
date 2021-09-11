@@ -46,8 +46,8 @@ services:
       - PMA_ARBITRARY=1
       - PMA_HOST=mariadb
       - PMA_USER=root
-    expose:
-      - "18000"
+    ports
+      - "18000:80"
     depends_on:
       - mariadb
     networks:
