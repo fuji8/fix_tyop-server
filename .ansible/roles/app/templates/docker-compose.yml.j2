@@ -45,9 +45,7 @@ services:
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     environment:
-      - PMA_ARBITRARY=1
       - PMA_HOST=mariadb
-      - PMA_USER=root
     expose:
       - "80"
     depends_on:
