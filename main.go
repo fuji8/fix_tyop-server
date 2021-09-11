@@ -27,6 +27,7 @@ type Dialogue struct {
 	DayOfWeek int32
 	Oder      int
 	Dialogue  string
+	Options   string
 }
 
 func (d *Dialogue) BeforeCreate(tx *gorm.DB) (err error) {
@@ -80,7 +81,6 @@ func main() {
 		dow := c.QueryParam("dayOfWeek")
 		dayOfWeek, ok := dayofweek.DayOfWeek_value[dow]
 		if !ok {
-			fmt.Println("###: ", dow)
 			return echo.NewHTTPError(http.StatusNotFound)
 		}
 		order, err := strconv.Atoi(c.QueryParam("order"))
@@ -99,7 +99,7 @@ func main() {
 			return echo.NewHTTPError(http.StatusInternalServerError)
 		}
 		q.Set("text", dialogue.Dialogue)
-		u.RawQuery = q.Encode()
+		u.RawQuery = q.Encode() + "&" + dialogue.Options
 
 		resp, err := http.Get(u.String())
 		if err != nil {
