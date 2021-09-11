@@ -16,7 +16,7 @@ services:
     restart: always
     environment:
       aitalk_username: "{{app.aitalk_username}}"
-      aitalk_password: "{{app.sitalk_password}}"
+      aitalk_password: "{{app.aitalk_password}}"
       mariadb_host: mariadb
       mariadb_password: "{{app.mariadb_root_password}}"
     expose:
